@@ -73,8 +73,8 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'import/no-extraneous-dependencies': 'off',
     'padded-blocks': ['error', 'never'],
-    'react/function-component-definition': [
-      2, { namedComponents: 'arrow-function' },
-    ],
+    // 'react/function-component-definition': [
+    //   2, { namedComponents: 'arrow-function' },
+    // ],
   },
 };

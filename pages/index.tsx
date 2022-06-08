@@ -1,10 +1,12 @@
 /* eslint-disable no-alert */
 import axios, { AxiosError } from 'axios';
 import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next'
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import MainLayout from '../layouts/MainLayout';
 
 interface IPerson {
   address: {street: string, suite: string, city: string, zipcode: string};
@@ -17,21 +19,13 @@ interface IPerson {
   website: string;
 }
 
-const Home: NextPage = () => {
-  const [persons, setPersons] = useState<IPerson[]>([]);
-  const fetchUsers = async () => {
-    try {
-      const { data } = await axios.get<IPerson[]>('https://jsonplaceholder.typicode.com/users');
-      setPersons(data);
-    } catch (error) {
-      alert((error as AxiosError).message);
-    }
-  };
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+type Props = {
+  users: IPerson[];
+}
+
+const Home: NextPage<Props> = ({ users }) => {
   return (
-    <Wrapper>
+    <MainLayout>
       <Head>
         <title>Next title</title>
         <meta name="description" content="Lorem ipsum dolor sit amet."/>
@@ -47,13 +41,24 @@ const Home: NextPage = () => {
       </p>
       <ul>
         {
-          persons.map((person) => (
+          users.map((person) => (
             <li key={person.name}>{person.name}</li>
           ))
         }
       </ul>
-    </Wrapper>
+    </MainLayout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
+  let users: IPerson[] = [];
+  try {
+    const result = await axios.get<IPerson[]>('https://jsonplaceholder.typicode.com/users/');
+    users = result.data;
+  } catch (error) {
+    alert((error as AxiosError).message);
+  }
+  return { props: { users } };
 };
 
 const Wrapper = styled.section`

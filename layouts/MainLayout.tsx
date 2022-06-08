@@ -1,6 +1,19 @@
-const MainLayout = () => {
+import Link from 'next/link';
+
+type Props = {
+  children: React.ReactNode;
+}
+const MainLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div>MainLayout</div>
+    <>
+      <nav>
+        <Link href={'/'}><a>Home</a></Link>
+        <h1>Navigation</h1>
+      </nav>
+      <main>
+        {children}
+      </main>
+    </>
   );
 };
 
