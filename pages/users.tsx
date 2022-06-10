@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { AxiosError } from 'axios';
+import Link from 'next/link';
 import { GetServerSideProps, NextPage } from 'next/types';
-import { authAxios } from '../api/axios';
+import { getAllUsers } from '../api/jsonplaceholder/api';
 import { IUser } from '../interfaces/user';
 
 type Props = {
@@ -15,7 +17,9 @@ const Users: NextPage<Props> = ({ users }) => {
       <ul>
         {
           users.map((person) => (
-            <li key={person.name}>{person.name}</li>
+            <li key={person.name}>
+              <Link href={`/user/${person.id}`}><a>{person.name}</a></Link>
+            </li>
           ))
         }
       </ul>
@@ -25,10 +29,10 @@ const Users: NextPage<Props> = ({ users }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   try {
-    const users = await authAxios.get<IUser[]>('/users');
+    const users = await getAllUsers();
     return { props: { users } };
   } catch (error) {
-    alert((error as AxiosError).message);
+    console.log((error as AxiosError).message);
   }
   return { props: { users: [] } };
 };

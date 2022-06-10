@@ -29,14 +29,16 @@ const MainLayout: React.FC<Props> = ({ children }) => {
 };
 
 const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 4em;
   width: 500px;
   height: 100vh;
-  background: ${({ theme }) => theme.colors.black};;
+  background: ${({ theme }) => theme.colors.black};
 `;
 const StyledMain = styled.main`
-  min-height: 550px;
+  flex: 1;
 `;
 
 export default MainLayout;
