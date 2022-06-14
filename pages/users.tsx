@@ -4,10 +4,10 @@ import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { GetServerSideProps, NextPage } from 'next/types';
 import { getAllUsers } from '../api/jsonplaceholder/api';
-import { IUser } from '../interfaces/user';
+import { IUserJson } from '../interfaces/user';
 
 type Props = {
-  users: IUser[];
+  users: IUserJson[];
 }
 
 const Users: NextPage<Props> = ({ users }) => {

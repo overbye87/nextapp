@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Footer = () => {
   return (
-    <StyledFooter>Footer</StyledFooter>
+    <StyledFooter>Footer &#169; Lorem </StyledFooter>
   );
 };
 

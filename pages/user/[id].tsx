@@ -4,11 +4,11 @@ import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getOneUser } from '../../api/jsonplaceholder/api';
-import { IUser } from '../../interfaces/user';
+import { IUserJson } from '../../interfaces/user';
 // users/?id=1
 
 type Props = {
-  user: IUser;
+  user: IUserJson;
 }
 
 const User: NextPage<Props> = ({ user }) => {

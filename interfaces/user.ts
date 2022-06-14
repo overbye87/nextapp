@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IUserJson {
   address: {
     street: string,
     suite: string,

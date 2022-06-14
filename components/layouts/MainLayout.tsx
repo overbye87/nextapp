@@ -33,7 +33,7 @@ const StyledSection = styled.section`
   flex-direction: column;
   margin: 0 auto;
   padding: 4em;
-  width: 500px;
+  width: 900px;
   height: 100vh;
   background: ${({ theme }) => theme.colors.black};
 `;

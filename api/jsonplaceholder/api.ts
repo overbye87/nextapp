@@ -1,15 +1,15 @@
 import { jsonplaceholderAxios } from './axios';
-import { IUser } from '../../interfaces/user';
+import { IUserJson } from '../../interfaces/user';
 
 const path = '/users';
 
-export const getAllUsers = (): Promise<IUser[] | []> => {
-  const response = jsonplaceholderAxios.get<[], IUser[]>(path);
+export const getAllUsers = (): Promise<IUserJson[] | []> => {
+  const response = jsonplaceholderAxios.get<[], IUserJson[]>(path);
   return response;
 };
 
-export const getOneUser = async (id: number): Promise<IUser | null> => {
-  const response = await jsonplaceholderAxios.get<[], IUser[]>(`${path}?id=${id}`);
+export const getOneUser = async (id: number): Promise<IUserJson | null> => {
+  const response = await jsonplaceholderAxios.get<[], IUserJson[]>(`${path}?id=${id}`);
   // console.log('response', response);
   if (response.length) {
     return response[0];

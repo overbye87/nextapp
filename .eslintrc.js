@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'import/no-named-as-default': 0,
     'prettier/prettier': 0,
     'react/prop-types': 'off',
     'jsx-quotes': ['error', 'prefer-double'],

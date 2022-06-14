@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTypedSelector } from '../store/store';
 
 const Header = () => {
+  const user = useTypedSelector(({ main }) => main.user);
   return (
-    <StyledHeader>Header</StyledHeader>
+    <>
+      <StyledHeader>Header: {user ? 'LOGIN' : 'NOT LOGIN'}</StyledHeader>
+    </>
   );
 };
 
