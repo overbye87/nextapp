@@ -14,7 +14,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
 };
 
 const StyledButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.darkBlack};
+  background-color: ${({ theme }) => theme.colors.gray};
   color: ${({ theme }) => theme.colors.red};
   &:hover {
     color: ${({ theme }) => theme.colors.white};

@@ -1,7 +1,9 @@
 /* eslint-disable no-alert */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { ISignIn, ISignUp, signIn, signUp } from '../../api/main/authApi';
+import { toast } from 'react-toastify';
+import { signIn, signUp } from '../../api/main/authApi';
+import { ISignIn, ISignUp } from '../../types/main';
 import { setCurrentUser } from './mainSlice';
 
 export const signInThunk = createAsyncThunk(
@@ -11,9 +13,10 @@ export const signInThunk = createAsyncThunk(
       dispatch(setCurrentUser(null));
       const user = await signIn(signInData);
       // Alert.alert('user', JSON.stringify(user, null, 2));
+      toast.info('Success');
       dispatch(setCurrentUser(user));
     } catch (error) {
-      alert(
+      toast.error(
         (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }
@@ -27,9 +30,10 @@ export const signUpThunk = createAsyncThunk(
       dispatch(setCurrentUser(null));
       const user = await signUp(signUpData);
       // Alert.alert('user', JSON.stringify(user, null, 2));
+      toast.info('Success');
       dispatch(setCurrentUser(user));
     } catch (error) {
-      alert(
+      toast.error(
         (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }

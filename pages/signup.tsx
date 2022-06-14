@@ -2,11 +2,21 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
 
+import SignUpForm from '../components/SignUpForm';
+import { signUpThunk } from '../store/main/authThunks';
+import { useTypedDispatch } from '../store/store';
+import { ISignUp } from '../types/main';
+
 const SignUp: NextPage = () => {
+  const dispatch = useTypedDispatch();
+  const handleSubmit = async (values: ISignUp) => {
+    dispatch(signUpThunk(values));
+  };
+
   return (
     <>
       <StyledTitle>Sign Up</StyledTitle>
-      <p>Sign Up</p>
+      <SignUpForm onSubmit={handleSubmit}/>
     </>
   );
 };

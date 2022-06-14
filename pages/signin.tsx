@@ -6,11 +6,6 @@ import { signInThunk } from '../store/main/authThunks';
 import { useTypedDispatch } from '../store/store';
 import { ISignIn } from '../types/main';
 
-const initialValues: ISignIn = {
-  email: 'admin@admin.ru',
-  password: 'admin',
-};
-
 const SignIn: NextPage = () => {
   const dispatch = useTypedDispatch();
   const handleSubmit = async (values: ISignIn) => {
@@ -20,7 +15,7 @@ const SignIn: NextPage = () => {
   return (
     <>
       <StyledTitle>Sign In</StyledTitle>
-      <SignInForm initialValues={initialValues} onSubmit={handleSubmit}/>
+      <SignInForm onSubmit={handleSubmit}/>
     </>
   );
 };

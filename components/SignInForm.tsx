@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { FormikProps, useFormik } from 'formik';
 import styled from 'styled-components';
@@ -6,16 +7,24 @@ import { ISignIn } from '../types/main';
 import CustomTextField from './CustomTextField';
 import CustomButton from './CustomButton';
 
+const defaultValues = {
+  email: 'admin@admin.ru',
+  password: 'admin',
+};
+
 type Props = {
-  initialValues: ISignIn;
+  initialValues?: ISignIn;
   // eslint-disable-next-line no-unused-vars
   onSubmit: (values: ISignIn) => void;
 };
 
-const Form: React.FC<Props> = (props) => {
+const SignInForm: React.FC<Props> = ({
+  initialValues = defaultValues,
+  onSubmit,
+}) => {
   const formik: FormikProps<ISignIn> = useFormik<ISignIn>({
-    initialValues: props.initialValues,
-    onSubmit: props.onSubmit,
+    initialValues,
+    onSubmit,
   });
 
   return (
@@ -53,4 +62,4 @@ const StyledForm = styled.form`
   margin: 0 auto;
 `;
 
-export default Form;
+export default SignInForm;
