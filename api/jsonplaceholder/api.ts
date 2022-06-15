@@ -4,15 +4,11 @@ import { IUserJson } from '../../interfaces/user';
 const path = '/users';
 
 export const getAllUsers = (): Promise<IUserJson[] | []> => {
-  const response = jsonplaceholderAxios.get<[], IUserJson[]>(path);
-  return response;
+  return jsonplaceholderAxios.get<unknown, IUserJson[]>(path);
 };
 
 export const getOneUser = async (id: number): Promise<IUserJson | null> => {
-  const response = await jsonplaceholderAxios.get<[], IUserJson[]>(`${path}?id=${id}`);
+  const response = await jsonplaceholderAxios.get<unknown, IUserJson[]>(path, { params: { id } });
   // console.log('response', response);
-  if (response.length) {
-    return response[0];
-  }
-  return null;
+  return response[0] || null;
 };

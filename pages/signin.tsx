@@ -1,12 +1,13 @@
-/* eslint-disable max-len */
 import type { NextPage } from 'next';
 import styled from 'styled-components';
+
 import SignInForm from '../components/SignInForm';
 import { signInThunk } from '../store/main/authThunks';
-import { useTypedDispatch } from '../store/store';
+import { useTypedDispatch, useTypedSelector } from '../store/store';
 import { ISignIn } from '../types/main';
 
 const SignIn: NextPage = () => {
+  const user = useTypedSelector(({ main }) => main.user);
   const dispatch = useTypedDispatch();
   const handleSubmit = async (values: ISignIn) => {
     dispatch(signInThunk(values));
@@ -15,7 +16,11 @@ const SignIn: NextPage = () => {
   return (
     <>
       <StyledTitle>Sign In</StyledTitle>
-      <SignInForm onSubmit={handleSubmit}/>
+      {
+        user
+          ? <p>{'You are already sign in. Please log out first.'}</p>
+          : <SignInForm onSubmit={handleSubmit}/>
+      }
     </>
   );
 };

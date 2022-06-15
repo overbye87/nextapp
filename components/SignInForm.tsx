@@ -19,11 +19,11 @@ type Props = {
 };
 
 const SignInForm: React.FC<Props> = ({
-  initialValues = defaultValues,
+  initialValues,
   onSubmit,
 }) => {
-  const formik: FormikProps<ISignIn> = useFormik<ISignIn>({
-    initialValues,
+  const formik = useFormik({
+    initialValues: initialValues || defaultValues,
     onSubmit,
   });
 
@@ -31,7 +31,7 @@ const SignInForm: React.FC<Props> = ({
     <StyledForm onSubmit={formik.handleSubmit}>
       <CustomTextField
         id="email"
-        label = "EMAIL"
+        label="EMAIL"
         value={formik.values.email}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -39,20 +39,24 @@ const SignInForm: React.FC<Props> = ({
       <CustomTextField
         type="password"
         id="password"
-        label = "PASSWORD"
+        label="PASSWORD"
         value={formik.values.password}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
       <CustomButton
         type="submit"
-        disabled = {!formik.isValid || formik.isSubmitting}
+        disabled={!formik.isValid || formik.isSubmitting}
       >
         SUBMIT
       </CustomButton>
     </StyledForm>
   );
 };
+
+SignInForm.defaultProps = {
+  initialValues: defaultValues,
+} as Props;
 
 const StyledForm = styled.form`
   display: flex;

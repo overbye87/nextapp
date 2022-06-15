@@ -7,7 +7,8 @@ const Error: NextPage = () => {
     <>
       <h1>Error 404</h1>
       <p>
-        {'Page not found. '}
+        {/* {'Page not found. '} */}
+        Page not found.{' '}
         <Link href="/"><a>Back to home.</a></Link>
         <button onClick={() => { Router.back(); }}>Previous page</button>
       </p>
