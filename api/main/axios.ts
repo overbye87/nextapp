@@ -19,7 +19,15 @@ const addTokenToHeaders = (token: string) => {
   (authAxios.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
 };
 
+const removeTokenFromHeaders = () => {
+  interface CustomHeaders extends HeadersDefaults {
+    'x-access-token'?: string | null;
+  }
+  delete (authAxios.defaults.headers as CustomHeaders)['x-access-token'];
+};
+
 export {
   authAxios,
   addTokenToHeaders,
+  removeTokenFromHeaders,
 };

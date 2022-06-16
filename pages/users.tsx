@@ -8,15 +8,16 @@ import { IUserJson } from '../interfaces/user';
 
 type Props = {
   users: IUserJson[];
+  protected: boolean;
 }
 
-const Users: NextPage<Props> = ({ users }) => {
+const Users: NextPage<Props> = (props) => {
   return (
     <>
       <h1>Users</h1>
       <ul>
         {
-          users.map((person) => (
+          props.users.map((person) => (
             <li key={person.name}>
               <Link href={`/user/${person.id}`}><a>{person.name}</a></Link>
             </li>
@@ -27,22 +28,14 @@ const Users: NextPage<Props> = ({ users }) => {
   );
 };
 
-export const getStaticProps = async () => {
-  return {
-    props: {
-      protected: true,
-    },
-  };
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const users = await getAllUsers();
-    return { props: { users } };
+    return { props: { users, protected: true } };
   } catch (error) {
     console.log((error as AxiosError).message);
   }
-  return { props: { users: [] } };
+  return { props: { users: [], protected: true } };
 };
 
 export default Users;

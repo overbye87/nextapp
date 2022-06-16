@@ -1,17 +1,21 @@
 import { ISignIn, ISignUp, IUser } from '../../types/main';
-import { addTokenToHeaders, authAxios } from './axios';
+import { authAxios } from './axios';
 
 type IResp = { token: string, data: IUser }
 
-export const signIn = async (SignInData: ISignIn): Promise<IUser> => {
-  const { token, data } = await authAxios.post<unknown, IResp>('/auth', SignInData);
-  // await storage.token.set(token);
-  addTokenToHeaders(token);
-  return data;
+type Response = {
+  data: IUser;
+  token: string;
+}
+
+export const check = async (): Promise<Response> => {
+  return authAxios.get<unknown, IResp>('/auth');
 };
 
-export const signUp = async (SignUpData: ISignUp): Promise<IUser> => {
-  const { token, data } = await authAxios.post<unknown, IResp>('/auth/signup', SignUpData);
-  // await storage.token.set(token);
-  return data;
+export const signIn = async (SignInData: ISignIn): Promise<Response> => {
+  return authAxios.post<unknown, IResp>('/auth', SignInData);
+};
+
+export const signUp = async (SignUpData: ISignUp): Promise<Response> => {
+  return authAxios.post<unknown, IResp>('/auth/signup', SignUpData);
 };

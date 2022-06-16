@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 import SignInForm from '../components/SignInForm';
 import { signInThunk } from '../store/main/authThunks';
-import { useTypedDispatch, useTypedSelector } from '../store/store';
+import { useAppDispatch, useAppSelector } from '../store/store';
 import { ISignIn } from '../types/main';
 
 const SignIn: NextPage = () => {
-  const user = useTypedSelector(({ main }) => main.user);
-  const dispatch = useTypedDispatch();
+  const user = useAppSelector(({ main }) => main.user);
+  const dispatch = useAppDispatch();
   const handleSubmit = async (values: ISignIn) => {
     dispatch(signInThunk(values));
   };

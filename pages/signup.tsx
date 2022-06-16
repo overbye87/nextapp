@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import SignUpForm from '../components/SignUpForm';
 import { signUpThunk } from '../store/main/authThunks';
-import { useTypedDispatch } from '../store/store';
+import { useAppDispatch } from '../store/store';
 import { ISignUp } from '../types/main';
 
 const SignUp: NextPage = () => {
-  const dispatch = useTypedDispatch();
+  const dispatch = useAppDispatch();
   const handleSubmit = async (values: ISignUp) => {
     dispatch(signUpThunk(values));
   };
