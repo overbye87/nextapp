@@ -27,6 +27,14 @@ const Users: NextPage<Props> = ({ users }) => {
   );
 };
 
+export const getStaticProps = async () => {
+  return {
+    props: {
+      protected: true,
+    },
+  };
+};
+
 export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   try {
     const users = await getAllUsers();

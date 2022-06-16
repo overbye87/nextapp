@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import { ThemeProvider } from '@mui/material/styles';
 import MainLayout from '../components/layouts/MainLayout';
-import { store } from '../store/store';
+import { store, useTypedSelector } from '../store/store';
 import GlobalStyle from '../styles/globalStyle';
 import sctheme from '../styles/theme/main';
 
@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme/dark';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
+  const user = useTypedSelector(({ main }) => main.user);
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -27,7 +28,11 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         />
         <GlobalStyle />
         <MainLayout>
-          <Component {...pageProps} />
+          {
+            (pageProps.protected && !user)
+              ? <p>PROTECTED</p>
+              : <Component {...pageProps} />
+          }
         </MainLayout>
         <ToastContainer
           theme="dark"
