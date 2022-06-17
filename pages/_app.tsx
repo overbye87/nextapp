@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import { ThemeProvider } from '@mui/material/styles';
 import MainLayout from '../components/layouts/MainLayout';
-import { store, useAppSelector } from '../store/store';
+import { store } from '../store/store';
 import GlobalStyle from '../styles/globalStyle';
 import sctheme from '../styles/theme/main';
 
@@ -15,7 +15,6 @@ import theme from '../styles/theme/dark';
 import ProtectRoute from '../components/ProtectRoute';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
-  // const user = useAppSelector(({ main }) => main.user);
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

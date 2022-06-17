@@ -17,7 +17,7 @@ const ProtectRoute: React.FC<Props> = (props) => {
   useEffect(() => {
     const token = cookies.token.get();
     if (token) {
-      addTokenToHeaders(token);
+      // addTokenToHeaders(token);
       dispatch(checkThunk());
     }
     setFirstLoading(false);

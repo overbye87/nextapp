@@ -2,14 +2,13 @@
 /* eslint-disable no-alert */
 import { AxiosError } from 'axios';
 import Link from 'next/link';
-import { GetServerSideProps, NextPage } from 'next/types';
-import { getAllUsers } from '../api/jsonplaceholder/api';
-import { check } from '../api/main/authApi';
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next/types';
 import { addTokenToHeaders } from '../api/main/axios';
-import { IUserJson } from '../interfaces/user';
+import { getAllUsers } from '../api/main/userApi';
+import { IUser } from '../types/main';
 
 type Props = {
-  users: IUserJson[];
+  users: IUser[];
   protected: boolean;
 }
 
@@ -20,8 +19,8 @@ const Users: NextPage<Props> = (props) => {
       <ul>
         {
           props.users.map((person) => (
-            <li key={person.name}>
-              <Link href={`/user/${person.id}`}><a>{person.name}</a></Link>
+            <li key={person.login}>
+              <Link href={`/user/${person.id}`}><a>{person.firstName} {person.lastName}</a></Link>
             </li>
           ))
         }
@@ -30,29 +29,49 @@ const Users: NextPage<Props> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const rawToken = context.req.cookies.token;
-  if (rawToken) {
-    const token = JSON.parse(rawToken);
-    addTokenToHeaders(token);
-    const { data, token: newToken } = await check();
-  }
-  type ServerProps = {
-    protected: boolean;
-    users: IUserJson[];
-  }
-  const props: ServerProps = {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const props = {
     protected: true,
-    users: [],
+    users: [] as IUser[],
   };
   try {
+    const rawToken = ctx.req.cookies.token;
+    if (!rawToken) {
+      throw new Error('Not auth');
+    }
+    const token = JSON.parse(rawToken);
+    addTokenToHeaders(token);
     const users = await getAllUsers();
+    console.log(users);
     props.users = users;
     return { props };
   } catch (error) {
     console.log((error as AxiosError).message);
+    return {
+      redirect: {
+        destination: '/signin',
+        statusCode: 301,
+      },
+    };
   }
-  return { props };
+  // const rawToken = context.req.cookies.token;
+  // try {
+  //   if (!rawToken) {
+  //     throw new Error('Not auth');
+  //   }
+  //   const token = JSON.parse(rawToken);
+  //   // addTokenToHeaders(token);
+  //   createRequestInterceptor(token);
+  //   // addTokenToHeaders(token);
+  //   const { data, token: newToken } = await check();
+  // } catch (err) {
+  //   return {
+  //     redirect: {
+  //       destination: '/signin',
+  //       statusCode: 301,
+  //     },
+  //   };
+  // }
 };
 
 export default Users;

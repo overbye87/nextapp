@@ -65,39 +65,3 @@ export const signUpThunk = createAsyncThunk(
     }
   },
 );
-
-// export const getAllUsersThunk = createAsyncThunk(
-//   'user/getAllUsers',
-//   async (params, { dispatch }) => {
-//     try {
-//       dispatch(setCurrentUsers([]));
-//       const users = await userApi.getAllUsers();
-//       // Alert.alert('user', JSON.stringify(user, null, 2));
-//       dispatch(setCurrentUsers(users));
-//     } catch (error) {
-//       Alert.alert(
-//         (error as AxiosError).message,
-//         (error as AxiosError<{ message: string }>).response?.data.message,
-//       );
-//     }
-//   },
-// );
-
-// export const deleteUserThunk = createAsyncThunk<unknown, number>(
-//   'user/deleteUser',
-//   async (id, { dispatch }) => {
-//     try {
-//       const result = await userApi.deleteOneUser(id);
-//       // Alert.alert('user', JSON.stringify(user, null, 2));
-//       if (result) {
-//         const users = await userApi.getAllUsers();
-//         dispatch(setCurrentUsers(users));
-//       }
-//     } catch (error) {
-//       Alert.alert(
-//         (error as AxiosError).message,
-//         (error as AxiosError<{ message: string }>).response?.data.message,
-//       );
-//     }
-//   },
-// );
