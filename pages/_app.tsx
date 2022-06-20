@@ -8,7 +8,7 @@ import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import { ThemeProvider } from '@mui/material/styles';
 import MainLayout from '../src/components/layouts/MainLayout';
 import { store } from '../src/store/store';
-import GlobalStyle from '../src/styles/globalStyle';
+import GlobalStyle from '../src/styles/globalStyleSC';
 import sctheme from '../src/styles/theme/main';
 
 import 'react-toastify/dist/ReactToastify.css';
