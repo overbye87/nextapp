@@ -8,10 +8,8 @@ const authAxios = axios.create({
   timeout: 1000,
 });
 
-
-
 export const createRequestInterceptor = (token?: string) => {
-  console.log('TOKEN>>>', token)
+  // console.log('TOKEN>>>', token)
   if (typeof window === 'undefined') {
     authAxios.interceptors.request.use((options) => {
       if (token) {

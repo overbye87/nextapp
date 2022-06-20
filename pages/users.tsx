@@ -40,6 +40,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       throw new Error('Not auth');
     }
     const token = JSON.parse(rawToken);
+
     addTokenToHeaders(token);
     const users = await getAllUsers();
     console.log(users);
@@ -54,24 +55,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       },
     };
   }
-  // const rawToken = context.req.cookies.token;
-  // try {
-  //   if (!rawToken) {
-  //     throw new Error('Not auth');
-  //   }
-  //   const token = JSON.parse(rawToken);
-  //   // addTokenToHeaders(token);
-  //   createRequestInterceptor(token);
-  //   // addTokenToHeaders(token);
-  //   const { data, token: newToken } = await check();
-  // } catch (err) {
-  //   return {
-  //     redirect: {
-  //       destination: '/signin',
-  //       statusCode: 301,
-  //     },
-  //   };
-  // }
 };
 
 export default Users;
