@@ -4,9 +4,9 @@ import { GetServerSideProps, NextPage } from 'next';
 import { GetServerSidePropsContext } from 'next/types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getOneUser } from '../../api/main/userApi';
-import { IUser } from '../../types/main';
-import { addTokenToHeaders } from '../../api/main/axios';
+import { getOneUser } from '../../src/api/main/userApi';
+import { IUser } from '../../src/types/main';
+import { addTokenToHeaders } from '../../src/api/main/axios';
 
 type Props = {
   user: IUser;

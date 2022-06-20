@@ -3,9 +3,9 @@
 import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next/types';
-import { addTokenToHeaders } from '../api/main/axios';
-import { getAllUsers } from '../api/main/userApi';
-import { IUser } from '../types/main';
+import { addTokenToHeaders } from '../src/api/main/axios';
+import { getAllUsers } from '../src/api/main/userApi';
+import { IUser } from '../src/types/main';
 
 type Props = {
   users: IUser[];

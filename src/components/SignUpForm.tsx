@@ -1,9 +1,9 @@
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { FormikProps, useFormik } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
 import { ISignUp } from '../types/main';
-import CustomButton from './CustomButton';
-import CustomTextField from './CustomTextField';
 
 const defaultValues = {
   email: 'admin@admin.ru',
@@ -30,14 +30,14 @@ const SignUpForm: React.FC<Props> = ({
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <CustomTextField
+      <TextField
         id="email"
         label = "EMAIL"
         value={formik.values.email}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomTextField
+      <TextField
         type="password"
         id="password"
         label = "PASSWORD"
@@ -45,33 +45,33 @@ const SignUpForm: React.FC<Props> = ({
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomTextField
+      <TextField
         id="firstName"
         label = "FIRST NAME"
         value={formik.values.firstName}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomTextField
+      <TextField
         id="lastName"
         label = "LAST NAME"
         value={formik.values.lastName}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomTextField
+      <TextField
         id="login"
         label = "LOGIN"
         value={formik.values.login}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomButton
+      <Button
         type="submit"
         disabled = {!formik.isValid || formik.isSubmitting}
       >
         SUBMIT
-      </CustomButton>
+      </Button>
     </StyledForm>
   );
 };

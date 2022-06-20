@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Head from 'next/head';
 import styled from 'styled-components';
 import Footer from '../Footer';
@@ -7,7 +8,7 @@ import Navigation from '../Navigation';
 type Props = {
   children: React.ReactNode;
 }
-const MainLayout: React.FC<Props> = ({ children }) => {
+const MainLayout: React.FC<Props> = (props) => {
   return (
     <>
       <Head>
@@ -20,7 +21,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
         <Header />
         <Navigation />
         <StyledMain>
-          {children}
+          {props.children}
         </StyledMain>
         <Footer />
       </StyledSection>

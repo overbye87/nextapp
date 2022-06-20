@@ -1,10 +1,10 @@
+import Button from '@mui/material/Button';
 import React from 'react';
 import styled from 'styled-components';
 import { removeTokenFromHeaders } from '../api/main/axios';
 import { setCurrentUser } from '../store/main/mainSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import cookies from '../utils/cookies';
-import CustomButton from './CustomButton';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const Header = () => {
     <>
       <StyledHeader>
         <span>{'Header: '}{user ? 'LOGIN' : 'NOT LOGIN'}</span>
-        {!user || <CustomButton onClick={handleLogOut}>Log out</CustomButton>}
+        {!user || <Button onClick={handleLogOut}>Log out</Button>}
       </StyledHeader>
     </>
   );

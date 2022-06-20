@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import { FormikProps, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import styled from 'styled-components';
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { ISignIn } from '../types/main';
-import CustomTextField from './CustomTextField';
-import CustomButton from './CustomButton';
 
 const defaultValues = {
   email: 'admin@admin.ru',
@@ -29,14 +29,14 @@ const SignInForm: React.FC<Props> = ({
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <CustomTextField
+      <TextField
         id="email"
         label="EMAIL"
         value={formik.values.email}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomTextField
+      <TextField
         type="password"
         id="password"
         label="PASSWORD"
@@ -44,12 +44,12 @@ const SignInForm: React.FC<Props> = ({
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
       />
-      <CustomButton
+      <Button
         type="submit"
         disabled={!formik.isValid || formik.isSubmitting}
       >
         SUBMIT
-      </CustomButton>
+      </Button>
     </StyledForm>
   );
 };

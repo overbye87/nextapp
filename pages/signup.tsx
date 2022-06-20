@@ -2,10 +2,10 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
 
-import SignUpForm from '../components/SignUpForm';
-import { signUpThunk } from '../store/main/authThunks';
-import { useAppDispatch } from '../store/store';
-import { ISignUp } from '../types/main';
+import SignUpForm from '../src/components/SignUpForm';
+import { signUpThunk } from '../src/store/main/authThunks';
+import { useAppDispatch } from '../src/store/store';
+import { ISignUp } from '../src/types/main';
 
 const SignUp: NextPage = () => {
   const dispatch = useAppDispatch();

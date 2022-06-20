@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
 
-import SignInForm from '../components/SignInForm';
-import { signInThunk } from '../store/main/authThunks';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import { ISignIn } from '../types/main';
+import SignInForm from '../src/components/SignInForm';
+import { signInThunk } from '../src/store/main/authThunks';
+import { useAppDispatch, useAppSelector } from '../src/store/store';
+import { ISignIn } from '../src/types/main';
 
 const SignIn: NextPage = () => {
   const user = useAppSelector(({ main }) => main.user);

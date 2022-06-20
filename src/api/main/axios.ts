@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import axios, { HeadersDefaults } from 'axios';
-import { config } from '../../config';
+import { config } from '../../../config';
 import cookies from '../../utils/cookies';
 
 const authAxios = axios.create({
