@@ -6,9 +6,11 @@ import { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next/ty
 import { addTokenToHeaders } from '../src/api/main/axios';
 import { getAllUsers } from '../src/api/main/userApi';
 import { IUser } from '../src/types/main';
+import { getUserFromContext } from '../src/utils/getUserFromContext';
 
 type Props = {
   users: IUser[];
+  user: IUser | null;
   protected: boolean;
 }
 
@@ -32,18 +34,14 @@ const Users: NextPage<Props> = (props) => {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const props = {
     protected: true,
+    user: null as IUser | null,
     users: [] as IUser[],
   };
   try {
-    const rawToken = ctx.req.cookies.token;
-    if (!rawToken) {
-      throw new Error('Not auth');
-    }
-    const token = JSON.parse(rawToken);
-
+    const { user, token } = await getUserFromContext(ctx);
+    props.user = user;
     addTokenToHeaders(token);
     const users = await getAllUsers();
-    console.log(users);
     props.users = users;
     return { props };
   } catch (error) {

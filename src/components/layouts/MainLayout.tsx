@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import Head from 'next/head';
 import styled from 'styled-components';
+import cookies from '../../utils/cookies';
 import Footer from '../Footer';
 import Header from '../Header';
 import Navigation from '../Navigation';
@@ -21,6 +22,7 @@ const MainLayout: React.FC<Props> = (props) => {
         <Header />
         <Navigation />
         <StyledMain>
+          <p>{cookies.token.get()}</p>
           {props.children}
         </StyledMain>
         <Footer />
