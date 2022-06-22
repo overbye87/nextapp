@@ -12,6 +12,7 @@ const Header = () => {
 
   const handleLogOut = () => {
     cookies.token.remove();
+    cookies.isAuth.remove();
     removeTokenFromHeaders();
     dispatch(setCurrentUser(null));
   };

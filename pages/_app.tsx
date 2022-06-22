@@ -15,7 +15,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../src/styles/theme/dark';
 import ProtectRoute from '../src/components/ProtectRoute';
 
-const App: NextPage<AppProps> = (props) => {
+interface Props extends AppProps {
+  user: string;
+}
+
+const App: NextPage<Props> = (props) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -49,6 +53,10 @@ const App: NextPage<AppProps> = (props) => {
       </ThemeProvider>
     </Provider>
   );
+};
+
+App.getInitialProps = async (ctx) => {
+  return { user: 'ADMIN' };
 };
 
 export default App;

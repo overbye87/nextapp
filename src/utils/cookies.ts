@@ -35,6 +35,7 @@ class CookieItem<D> {
 
 const cookies = {
   token: new CookieItem<string>('token'),
+  isAuth: new CookieItem<boolean>('isAuth'),
 };
 
 export default cookies;

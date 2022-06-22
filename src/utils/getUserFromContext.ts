@@ -8,8 +8,11 @@ export const getUserFromContext = async (ctx: GetServerSidePropsContext) => {
     throw new Error('No token in cookies');
   }
   const token = JSON.parse(rawToken);
-
   addTokenToHeaders(token);
+
   const { data: user, token: newToken } = await check();
-  return { user, token: newToken };
+  return {
+    user,
+    token: newToken,
+  };
 };

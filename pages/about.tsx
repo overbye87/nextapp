@@ -31,7 +31,7 @@ const About: NextPage<Props> = ({ header, p1 }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps = async () => {
   const header = 'About';
   const p1 = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illum rem distinctio id harum tempore debitis, officia tempora, expedita quam ipsum praesentium temporibus, aliquid quibusdam est velit placeat ullam atque!';
   return {

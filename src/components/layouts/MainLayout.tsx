@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import Head from 'next/head';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import cookies from '../../utils/cookies';
 import Footer from '../Footer';
@@ -10,6 +11,9 @@ type Props = {
   children: React.ReactNode;
 }
 const MainLayout: React.FC<Props> = (props) => {
+  useEffect(() => {
+    cookies.isAuth.remove();
+  }, []);
   return (
     <>
       <Head>
@@ -22,7 +26,6 @@ const MainLayout: React.FC<Props> = (props) => {
         <Header />
         <Navigation />
         <StyledMain>
-          <p>{cookies.token.get()}</p>
           {props.children}
         </StyledMain>
         <Footer />

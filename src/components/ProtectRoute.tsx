@@ -14,11 +14,7 @@ const ProtectRoute: React.FC<Props> = (props) => {
   //     <p>PROTECTED ROUTE - Please authorise first!</p>
   //   );
   // }
-  return (
-    <>
-      {props.children}
-    </>
-  );
+  return props.children as React.ReactElement;
 };
 
 export default ProtectRoute;

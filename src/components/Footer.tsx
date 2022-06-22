@@ -1,9 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppSelector } from '../store/store';
+import cookies from '../utils/cookies';
 
 const Footer = () => {
+  const user = useAppSelector(({ main }) => main.user);
   return (
-    <StyledFooter>Footer &#169; Lorem </StyledFooter>
+    <StyledFooter>
+      <div>
+        {'Footer '}
+        &#169;
+        { 'Lorem '}
+        {/* <br/>
+        {user?.firstName}
+        {cookies.isAuth.get() ? ' => true' : null} */}
+      </div>
+    </StyledFooter>
   );
 };
 
