@@ -12,7 +12,6 @@ const Header = () => {
 
   const handleLogOut = () => {
     cookies.token.remove();
-    cookies.isAuth.remove();
     removeTokenFromHeaders();
     dispatch(setCurrentUser(null));
   };
@@ -20,7 +19,7 @@ const Header = () => {
   return (
     <>
       <StyledHeader>
-        <span>{'Header: '}{user ? 'LOGIN' : 'NOT LOGIN'}</span>
+        <span>{user ? `USER: ${user.firstName} ${user.lastName}` : 'Header'}</span>
         {!user || <Button onClick={handleLogOut}>Log out</Button>}
       </StyledHeader>
     </>

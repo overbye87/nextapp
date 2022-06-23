@@ -14,7 +14,7 @@ type Props = {
 
 const User: NextPage<Props> = ({ user }) => {
   const router = useRouter();
-  console.log(user);
+  // console.log(user);
   if (!user) {
     return (
       <>

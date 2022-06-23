@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
+import Button from '@mui/material/Button';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Router from 'next/router';
+import { useAppSelector } from '../src/store/store';
 
 type Props = {
   header: string;
@@ -10,13 +12,13 @@ type Props = {
 }
 
 const About: NextPage<Props> = ({ header, p1 }) => {
-  const handleClick = () => {
-    Router.push('/');
-  };
+  const user = useAppSelector(({ main }) => main.user);
 
   return (
     <>
       <h1>{header}</h1>
+      <h2>{user?.login}</h2>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
       <p>{p1}</p>
       <Image
         src="/images/profile.jpg"
@@ -25,8 +27,12 @@ const About: NextPage<Props> = ({ header, p1 }) => {
         alt="Image"
       />
       <p>{p1}</p>
-      <button onClick={handleClick}>Back to home</button>
-      <button onClick={() => { Router.push('/users'); }}>Users</button>
+      <p>
+        <Button onClick={() => { Router.push('/'); }}>Back to home</Button>
+      </p>
+      <p>
+        <Button onClick={() => { Router.push('/users'); }}>Users</Button>
+      </p>
     </>
   );
 };

@@ -9,11 +9,11 @@ type Props = {
 const ProtectRoute: React.FC<Props> = (props) => {
   const user = useAppSelector(({ main }) => main.user);
 
-  // if (props.protected && !user) {
-  //   return (
-  //     <p>PROTECTED ROUTE - Please authorise first!</p>
-  //   );
-  // }
+  if (props.protected && !user) {
+    return (
+      <p>PROTECTED ROUTE - Please authorise first!</p>
+    );
+  }
   return props.children as React.ReactElement;
 };
 

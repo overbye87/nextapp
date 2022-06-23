@@ -12,15 +12,14 @@ export const checkThunk = createAsyncThunk(
   'user/check',
   async (_, { dispatch }) => {
     try {
-      dispatch(setCurrentUser(null));
+      // dispatch(setCurrentUser(null));
       const { data, token } = await check();
-      toast.info(token);
+      // toast.info(token);
       cookies.token.set(token);
       addTokenToHeaders(token);
       // Alert.alert('user', JSON.stringify(user, null, 2));
       toast.info('Token check success');
       dispatch(setCurrentUser(data));
-      cookies.isAuth.set(true);
     } catch (error) {
       toast.error(
         (error as AxiosError<{ message: string }>).response?.data.message,
@@ -34,14 +33,12 @@ export const signInThunk = createAsyncThunk(
   async (signInData: ISignIn, { dispatch }) => {
     try {
       dispatch(setCurrentUser(null));
-      cookies.isAuth.remove();
       const { data, token } = await signIn(signInData);
       cookies.token.set(token);
       addTokenToHeaders(token);
       // Alert.alert('user', JSON.stringify(user, null, 2));
       toast.info('Sign in success');
       dispatch(setCurrentUser(data));
-      cookies.isAuth.set(true);
     } catch (error) {
       toast.error(
         (error as AxiosError<{ message: string }>).response?.data.message,
@@ -55,7 +52,6 @@ export const signUpThunk = createAsyncThunk(
   async (signUpData: ISignUp, { dispatch }) => {
     try {
       dispatch(setCurrentUser(null));
-      cookies.isAuth.remove();
       const { data, token } = await signUp(signUpData);
       cookies.token.set(token);
       addTokenToHeaders(token);

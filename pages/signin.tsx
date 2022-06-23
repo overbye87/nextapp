@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 import SignInForm from '../src/components/SignInForm';
@@ -8,6 +9,8 @@ import { ISignIn } from '../src/types/main';
 
 const SignIn: NextPage = () => {
   const user = useAppSelector(({ main }) => main.user);
+  // const isServer = useRef(typeof window === 'undefined');
+  // console.log(isServer);
   const dispatch = useAppDispatch();
   const handleSubmit = async (values: ISignIn) => {
     dispatch(signInThunk(values));

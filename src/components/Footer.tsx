@@ -12,8 +12,7 @@ const Footer = () => {
         &#169;
         { 'Lorem '}
         {/* <br/>
-        {user?.firstName}
-        {cookies.isAuth.get() ? ' => true' : null} */}
+        {user?.firstName} */}
       </div>
     </StyledFooter>
   );

@@ -14,14 +14,12 @@ import sctheme from '../src/styles/theme/main';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../src/styles/theme/dark';
 import ProtectRoute from '../src/components/ProtectRoute';
+import GetUserFromCookies from '../src/components/GetUserFromCookies';
 
-interface Props extends AppProps {
-  user: string;
-}
-
-const App: NextPage<Props> = (props) => {
+const App: NextPage<AppProps> = (props) => {
   return (
     <Provider store={store}>
+      <GetUserFromCookies />
       <ThemeProvider theme={theme}>
         <SCThemeProvider theme={sctheme}>
           <NextNProgress
@@ -53,10 +51,6 @@ const App: NextPage<Props> = (props) => {
       </ThemeProvider>
     </Provider>
   );
-};
-
-App.getInitialProps = async (ctx) => {
-  return { user: 'ADMIN' };
 };
 
 export default App;
