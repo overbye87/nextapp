@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { removeTokenFromHeaders } from '../api/main/axios';
 import { setCurrentUser } from '../store/main/mainSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
@@ -33,7 +33,7 @@ const StyledHeader = styled.header`
   align-items: center;
   padding: 1em;
   margin-bottom: 1em;
-  background: ${({ theme }) => theme.colors.gray};;
+  background: ${(props) => props.theme.colors.gray};
 `;
 
 export default Header;

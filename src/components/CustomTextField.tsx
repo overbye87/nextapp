@@ -1,6 +1,6 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const CustomTextField: React.FC<TextFieldProps> = (props) => {
   return (
@@ -12,21 +12,21 @@ const CustomTextField: React.FC<TextFieldProps> = (props) => {
 
 const StyledTextField = styled(TextField)`
   & .MuiInputLabel-root {
-    color: ${({ theme }) => theme.colors.red};
+    color: ${(props) => props.theme.colors.red};
   }
   & label.Mui-focused {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${(props) => props.theme.colors.white};
   }
   & .MuiOutlinedInput-root {
-    color: ${({ theme }) => theme.colors.darkWhite};
+    color: ${(props) => props.theme.colors.darkWhite};
     & fieldset {
-      border-color: ${({ theme }) => theme.colors.darkWhite};
+      border-color: ${(props) => props.theme.colors.darkWhite};
     }
     &:hover fieldset {
-      border-color: ${({ theme }) => theme.colors.white};
+      border-color: ${(props) => props.theme.colors.white};
     }
     &.Mui-focused fieldset {
-      border-color: ${({ theme }) => theme.colors.white};
+      border-color: ${(props) => props.theme.colors.white};
     }
   }
 `;

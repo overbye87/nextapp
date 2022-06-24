@@ -1,7 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 };
 
 const StyledTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export default Home;

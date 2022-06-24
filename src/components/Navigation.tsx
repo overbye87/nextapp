@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Navigation: React.FC = () => {
   return (
@@ -19,11 +19,11 @@ const StyledNav = styled.nav`
   display: flex;
   gap: 0.5em;
   flex-wrap: wrap;
-  // background: ${({ theme }) => theme.colors.gray};
+  // background: ${(props) => props.theme.colors.gray};
   a {
     padding: 0.2em 1em;
     border-radius: 0.1em;
-    background-color: ${({ theme }) => theme.colors.darkBlack};
+    background-color: ${(props) => props.theme.colors.darkBlack};
   }
 `;
 

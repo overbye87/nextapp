@@ -1,15 +1,9 @@
 import { createTheme } from '@mui/material/styles';
+import emotionTheme from '../emotion/emotionTheme';
 
-const colors = {
-  gray: '#484848',
-  red: '#f44336',
-  black: '#121212',
-  darkBlack: 'black',
-  white: '#efefdf',
-  darkWhite: '#afafaf',
-};
+const { colors } = emotionTheme;
 
-const theme = createTheme({
+const muiTheme = createTheme({
   components: {
     MuiTextField: {
       styleOverrides: {
@@ -50,4 +44,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default muiTheme;

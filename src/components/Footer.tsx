@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { useAppSelector } from '../store/store';
 import cookies from '../utils/cookies';
 
@@ -21,7 +21,7 @@ const Footer = () => {
 const StyledFooter = styled.footer`
   padding: 1em;
   margin-top: 1em;
-  background: ${({ theme }) => theme.colors.gray};;
+  background: ${(props) => props.theme.colors.gray};
 `;
 
 export default Footer;

@@ -4,32 +4,31 @@ import { NextPage } from 'next/types';
 import NextNProgress from 'nextjs-progressbar';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-import { ThemeProvider as SCThemeProvider } from 'styled-components';
-import { ThemeProvider } from '@mui/material/styles';
+
+import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import MainLayout from '../src/components/layouts/MainLayout';
 import { store } from '../src/store/store';
-import GlobalStyle from '../src/styles/globalStyleSC';
-import sctheme from '../src/styles/theme/main';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from '../src/styles/theme/dark';
 import ProtectRoute from '../src/components/ProtectRoute';
 import GetUserFromCookies from '../src/components/GetUserFromCookies';
+import emotionTheme from '../src/styles/emotion/emotionTheme';
+import muiTheme from '../src/styles/mui/muiTheme';
 
 const App: NextPage<AppProps> = (props) => {
   return (
     <Provider store={store}>
       <GetUserFromCookies />
-      <ThemeProvider theme={theme}>
-        <SCThemeProvider theme={sctheme}>
+      <ThemeProvider theme={emotionTheme}>
+        <MuiThemeProvider theme={muiTheme}>
           <NextNProgress
-            color={sctheme.colors.red}
+            color={'red'}
             startPosition={0.3}
             stopDelayMs={200}
             height={3}
             showOnShallow={true}
           />
-          <GlobalStyle />
           <MainLayout >
             <ProtectRoute protected={props.pageProps.protected}>
               <props.Component {...props.pageProps} />
@@ -47,7 +46,7 @@ const App: NextPage<AppProps> = (props) => {
             draggable
             pauseOnHover
           />
-        </SCThemeProvider>
+        </MuiThemeProvider>
       </ThemeProvider>
     </Provider>
   );

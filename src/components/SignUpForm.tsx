@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { FormikProps, useFormik } from 'formik';
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ISignUp } from '../types/main';
 
 const defaultValues = {

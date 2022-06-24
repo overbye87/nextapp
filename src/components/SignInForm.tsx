@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { useFormik } from 'formik';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';

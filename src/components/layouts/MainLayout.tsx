@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
+
+import styled from '@emotion/styled';
 import Head from 'next/head';
-import styled from 'styled-components';
+
 import Footer from '../Footer';
 import Header from '../Header';
 import Navigation from '../Navigation';
@@ -36,7 +38,7 @@ const StyledSection = styled.section`
   padding: 4em;
   width: 900px;
   height: 100vh;
-  background: ${({ theme }) => theme.colors.black};
+  background: ${(props) => props.theme.colors.darkBlack};
 `;
 const StyledMain = styled.main`
   flex: 1;

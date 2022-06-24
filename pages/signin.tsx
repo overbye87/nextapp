@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useRef } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import SignInForm from '../src/components/SignInForm';
 import { signInThunk } from '../src/store/main/authThunks';
@@ -29,7 +29,7 @@ const SignIn: NextPage = () => {
 };
 
 const StyledTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export default SignIn;

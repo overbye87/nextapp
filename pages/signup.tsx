@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import type { NextPage } from 'next';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import SignUpForm from '../src/components/SignUpForm';
 import { signUpThunk } from '../src/store/main/authThunks';
@@ -22,7 +22,7 @@ const SignUp: NextPage = () => {
 };
 
 const StyledTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export default SignUp;
