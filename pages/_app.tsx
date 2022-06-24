@@ -20,7 +20,7 @@ const App: NextPage<AppProps> = (props) => {
   return (
     <Provider store={store}>
       <GetUserFromCookies />
-      <ThemeProvider theme={emotionTheme}>
+      {/* <ThemeProvider theme={emotionTheme}> */}
         <MuiThemeProvider theme={muiTheme}>
           <NextNProgress
             color={'red'}
@@ -47,7 +47,7 @@ const App: NextPage<AppProps> = (props) => {
             pauseOnHover
           />
         </MuiThemeProvider>
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </Provider>
   );
 };
