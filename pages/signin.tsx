@@ -29,7 +29,7 @@ const SignIn: NextPage = () => {
 };
 
 const StyledTitle = styled.h1`
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.red};
 `;
 
 export default SignIn;

@@ -5,23 +5,22 @@ import NextNProgress from 'nextjs-progressbar';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 
-import { ThemeProvider } from '@emotion/react';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import MainLayout from '../src/components/layouts/MainLayout';
 import { store } from '../src/store/store';
 
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectRoute from '../src/components/ProtectRoute';
 import GetUserFromCookies from '../src/components/GetUserFromCookies';
-import emotionTheme from '../src/styles/emotion/emotionTheme';
 import muiTheme from '../src/styles/mui/muiTheme';
+import GlobalCssOverride from '../src/components/GlobalCssOverride';
 
 const App: NextPage<AppProps> = (props) => {
   return (
     <Provider store={store}>
       <GetUserFromCookies />
-      {/* <ThemeProvider theme={emotionTheme}> */}
-        <MuiThemeProvider theme={muiTheme}>
+        <ThemeProvider theme={muiTheme}>
+          <GlobalCssOverride />
           <NextNProgress
             color={'red'}
             startPosition={0.3}
@@ -46,8 +45,7 @@ const App: NextPage<AppProps> = (props) => {
             draggable
             pauseOnHover
           />
-        </MuiThemeProvider>
-      {/* </ThemeProvider> */}
+        </ThemeProvider>
     </Provider>
   );
 };

@@ -38,7 +38,7 @@ const StyledSection = styled.section`
   padding: 4em;
   width: 900px;
   height: 100vh;
-  background: ${(props) => props.theme.colors.darkBlack};
+  background: ${(props) => props.theme.colors.black};
 `;
 const StyledMain = styled.main`
   flex: 1;

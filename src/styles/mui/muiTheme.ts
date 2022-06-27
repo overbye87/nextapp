@@ -35,7 +35,10 @@ const muiTheme = createTheme({
         root: {
           color: emotionTheme.colors.red,
           backgroundColor: emotionTheme.colors.gray,
-
+          '& :hover': {
+            color: emotionTheme.colors.white,
+            backgroundColor: emotionTheme.colors.red,
+          },
         },
       },
     },
